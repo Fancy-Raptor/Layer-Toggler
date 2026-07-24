@@ -1,5 +1,19 @@
 import OBR from "https://esm.sh/@owlbear-rodeo/sdk";
 
+// Define the rotation order
+const NEXT_LAYER = {
+  PROP: "ATTACHMENT",
+  ATTACHMENT: "CHARACTER",
+  CHARACTER: "PROP",
+};
+
+// Human-readable labels for the notifications
+const LAYER_LABELS = {
+  PROP: "Props layer",
+  ATTACHMENT: "Attachments layer",
+  CHARACTER: "Character layer",
+};
+
 OBR.onReady(async () => {
   // Register the button on the context menu of selected tokens/props
   await OBR.contextMenu.create({
@@ -11,12 +25,23 @@ OBR.onReady(async () => {
       },
     ],
     async onClick(context) {
+      let newLayerName = "";
+
       // Map item IDs to update their layer
       await OBR.scene.items.updateItems(context.items, (items) => {
         for (let item of items) {
-          item.layer = item.layer === "PROP" ? "ATTACHMENT" : "PROP";
+          // Cycle to the next layer (fallback to PROP if current layer is unrecognized)
+          item.layer = NEXT_LAYER[item.layer] || "PROP";
+          
+          // Capture the friendly name for the notification
+          newLayerName = LAYER_LABELS[item.layer] || `${item.layer} layer`;
         }
       });
+
+      // Show a temporary pop-up notification in Owlbear Rodeo
+      if (newLayerName) {
+        OBR.notification.show(`Moved to ${newLayerName}`);
+      }
     },
   });
 });
