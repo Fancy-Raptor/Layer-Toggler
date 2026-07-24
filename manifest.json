@@ -2,10 +2,10 @@
   "name": "Layer Toggler",
   "version": "1.0.0",
   "manifest_version": 1,
-  "icon": "/layers.svg",
+  "icon": "./layers.svg",
   "action": {
     "title": "Layer Toggler",
-    "icon": "/layers.svg",
-    "popover": "/index.html"
+    "icon": "./layers.svg",
+    "popover": "./index.html"
   }
 }
