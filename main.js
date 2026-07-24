@@ -8,9 +8,6 @@ OBR.onReady(async () => {
       {
         icon: "https://fancy-raptor.github.io/Layer-Toggler/layers.svg",
         label: "Layer swap",
-        filter: {
-          roles: ["GM"], // Optional: restrict to GM if desired
-        },
       },
     ],
     async onClick(context) {
