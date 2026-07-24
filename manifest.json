@@ -2,10 +2,10 @@
   "name": "Layer Toggler",
   "version": "1.0.0",
   "manifest_version": 1,
-  "icon": "https://cdn.jsdelivr.net/gh/Fancy-Raptor/Layer-Toggler@latest/layers.svg",
+  "icon": "/layers.svg",
   "action": {
     "title": "Layer Toggler (Shift+Z)",
-    "icon": "https://cdn.jsdelivr.net/gh/Fancy-Raptor/Layer-Toggler@latest/layers.svg",
-    "popover": "https://cdn.jsdelivr.net/gh/Fancy-Raptor/Layer-Toggler@latest/index.html"
+    "icon": "/layers.svg",
+    "popover": "/index.html"
   }
 }
