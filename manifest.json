@@ -8,13 +8,4 @@
     "icon": "https://cdn.jsdelivr.net/gh/Fancy-Raptor/Layer-Toggler@latest/layers.svg",
     "popover": "https://cdn.jsdelivr.net/gh/Fancy-Raptor/Layer-Toggler@latest/index.html"
   }
-}{
-  "name": "Layer Toggler",
-  "version": "1.0.0",
-  "manifest_version": 1,
-  "action": {
-    "title": "Layer Toggler (Shift+Z)",
-    "icon": "/layers.svg",
-    "popover": "/index.html"
-  }
 }
