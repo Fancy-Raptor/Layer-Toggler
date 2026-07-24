@@ -4,7 +4,7 @@
   "manifest_version": 1,
   "icon": "/layers.svg",
   "action": {
-    "title": "Layer Toggler (Shift+Z)",
+    "title": "Layer Toggler",
     "icon": "/layers.svg",
     "popover": "/index.html"
   }
