@@ -8,18 +8,18 @@ OBR.onReady(async () => {
       {
         icon: "https://fancy-raptor.github.io/Layer-Toggler/layers.svg",
         label: "Toggle Prop / Attachment Layer",
-      }
+        filter: {
+          roles: ["GM"], // Optional: restrict to GM if desired
+        },
+      },
     ],
     async onClick(context) {
-      const updates = context.items.map((item) => ({
-        id: item.id,
-        layer: item.layer === "PROP" ? "ATTACHMENT" : "PROP",
-      }));
-
-      await OBR.scene.items.updateItems(updates);
-    }
+      // Map item IDs to update their layer
+      await OBR.scene.items.updateItems(context.items, (items) => {
+        for (let item of items) {
+          item.layer = item.layer === "PROP" ? "ATTACHMENT" : "PROP";
+        }
+      });
+    },
   });
-
-  // Automatically close the action popover so no menu stays open
-  OBR.action.close();
 });
