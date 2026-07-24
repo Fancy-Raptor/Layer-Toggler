@@ -8,14 +8,4 @@
     "icon": "https://fancy-raptor.github.io/Layer-Toggler/layers.svg",
     "popover": "https://fancy-raptor.github.io/Layer-Toggler/index.html"
   }
-}{
-  "name": "Layer Toggler",
-  "version": "1.0.0",
-  "manifest_version": 1,
-  "icon": "./layers.svg",
-  "action": {
-    "title": "Layer Toggler",
-    "icon": "./layers.svg",
-    "popover": "./index.html"
-  }
 }
