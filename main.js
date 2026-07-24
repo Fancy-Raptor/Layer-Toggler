@@ -1,39 +1,25 @@
 import OBR from "https://esm.sh/@owlbear-rodeo/sdk";
 
 OBR.onReady(async () => {
-  // Register the button on the context menu
+  // Register the button on the context menu of selected tokens/props
   await OBR.contextMenu.create({
     id: "com.layer-toggler/toggle",
     icons: [
       {
         icon: "https://fancy-raptor.github.io/Layer-Toggler/layers.svg",
-        label: "Toggle Prop / Attachment Layer",
+        label: "Layer swap",
         filter: {
-          // Explicitly target items on PROP or ATTACHMENT layers
-          every: [
-            {
-              key: "layer",
-              value: ["PROP", "ATTACHMENT"],
-              operator: "in"
-            }
-          ]
-        }
-      }
+          roles: ["GM"], // Optional: restrict to GM if desired
+        },
+      },
     ],
     async onClick(context) {
-      // Extract target IDs from context
-      const targetIds = context.items.map((item) => item.id);
-
-      if (targetIds.length === 0) return;
-
-      // Execute update via callback function
-      await OBR.scene.items.updateItems(targetIds, (items) => {
+      // Map item IDs to update their layer
+      await OBR.scene.items.updateItems(context.items, (items) => {
         for (let item of items) {
-          // Normalize layer check (fallback to ATTACHMENT if layer is PROP, otherwise set to PROP)
-          const currentLayer = String(item.layer).toUpperCase();
-          item.layer = currentLayer === "PROP" ? "ATTACHMENT" : "PROP";
+          item.layer = item.layer === "PROP" ? "ATTACHMENT" : "PROP";
         }
       });
-    }
+    },
   });
 });
