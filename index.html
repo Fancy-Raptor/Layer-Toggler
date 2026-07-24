@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Layer Toggle Extension</title>
+</head>
+<body>
+  <script type="module">
+    // Import the SDK directly via CDN
+    import OBR from "https://esm.sh/@owlbear-rodeo/sdk";
+
+    OBR.onReady(() => {
+      // Add a global keydown listener
+      window.addEventListener("keydown", async (event) => {
+        // Check for hotkey (Shift + Z)
+        if (event.shiftKey && event.code === "KeyZ") {
+          
+          // Get currently selected items
+          const selectedIds = await OBR.player.getSelection();
+          if (!selectedIds || selectedIds.length === 0) return;
+
+          const items = await OBR.scene.items.getItems(selectedIds);
+          
+          // Toggle layer for selected items
+          const updates = items.map((item) => ({
+            id: item.id,
+            layer: item.layer === "PROP" ? "ATTACHMENT" : "PROP",
+          }));
+
+          // Apply update
+          await OBR.scene.items.updateItems(updates);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
