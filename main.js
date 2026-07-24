@@ -7,7 +7,7 @@ OBR.onReady(async () => {
     icons: [
       {
         icon: "https://fancy-raptor.github.io/Layer-Toggler/layers.svg",
-        label: "Toggle Prop / Attachment Layer",
+        label: "Layer swap",
         filter: {
           roles: ["GM"], // Optional: restrict to GM if desired
         },
