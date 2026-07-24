@@ -5,66 +5,31 @@
   <title>Layer Toggle Extension</title>
 </head>
 <body>
+  <div style="font-family: sans-serif; padding: 10px; color: white;">
+    <p>⚡ <strong>Layer Toggler is Active!</strong></p>
+    <p style="font-size: 0.85em; opacity: 0.8;">Select any item on the grid and click the new layer button on its action bar.</p>
+  </div>
+
   <script type="module">
     import OBR from "https://esm.sh/@owlbear-rodeo/sdk";
 
     OBR.onReady(() => {
-      // Create a quick-action button on selected items
+      // Create context menu button on selected items
       OBR.contextMenu.create({
         id: "com.layer-toggler/toggle",
         icons: [
           {
             icon: "/layers.svg",
             label: "Toggle Prop / Attachment Layer",
-            filter: {
-              roles: ["GM"], // Only visible to GM
-              every: [{ key: "type", value: "IMAGE" }] // Shows on image tokens/props
-            }
           }
         ],
         async onClick(context) {
-          // Toggle layer for selected items
+          // Toggle layer between PROP and ATTACHMENT
           const updates = context.items.map((item) => ({
             id: item.id,
             layer: item.layer === "PROP" ? "ATTACHMENT" : "PROP",
           }));
 
-          await OBR.scene.items.updateItems(updates);
-        }
-      });
-    });
-  </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Layer Toggle Extension</title>
-</head>
-<body>
-  <script type="module">
-    // Import the SDK directly via CDN
-    import OBR from "https://esm.sh/@owlbear-rodeo/sdk";
-
-    OBR.onReady(() => {
-      // Add a global keydown listener
-      window.addEventListener("keydown", async (event) => {
-        // Check for hotkey (Shift + Z)
-        if (event.shiftKey && event.code === "KeyZ") {
-          
-          // Get currently selected items
-          const selectedIds = await OBR.player.getSelection();
-          if (!selectedIds || selectedIds.length === 0) return;
-
-          const items = await OBR.scene.items.getItems(selectedIds);
-          
-          // Toggle layer for selected items
-          const updates = items.map((item) => ({
-            id: item.id,
-            layer: item.layer === "PROP" ? "ATTACHMENT" : "PROP",
-          }));
-
-          // Apply update
           await OBR.scene.items.updateItems(updates);
         }
       });
