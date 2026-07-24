@@ -2,7 +2,7 @@
   "name": "Layer Toggler",
   "version": "1.0.0",
   "manifest_version": 1,
-  "background": "index.html"
+  "background": "index.html",
   "icon": "https://fancy-raptor.github.io/Layer-Toggler/layers.svg",
   "action": {
     "title": "Layer Toggler",
