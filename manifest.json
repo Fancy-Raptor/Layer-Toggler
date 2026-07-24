@@ -1,0 +1,10 @@
+{
+  "name": "Layer Toggler",
+  "version": "1.0.0",
+  "manifest_version": 1,
+  "action": {
+    "title": "Layer Toggler (Shift+Z)",
+    "icon": "https://api.iconify.design/lucide:layers.svg",
+    "popover": "/index.html"
+  }
+}
