@@ -1,6 +1,0 @@
-{
-  "name": "Layer Toggler",
-  "version": "1.0.0",
-  "manifest_version": 1,
-  "background": "index.html"
-}
