@@ -2,15 +2,13 @@ import OBR from "https://esm.sh/@owlbear-rodeo/sdk";
 
 // Define the rotation order
 const NEXT_LAYER = {
-  PROP: "ATTACHMENT",
-  ATTACHMENT: "CHARACTER",
-  CHARACTER: "PROP",
+  MOUNT: "CHARACTER",
+  CHARACTER: "MOUNT",
 };
 
 // Human-readable labels for the notifications
 const LAYER_LABELS = {
-  PROP: "Props layer",
-  ATTACHMENT: "Attachments layer",
+  MOUNT: "Mount layer",
   CHARACTER: "Character layer",
 };
 
@@ -30,8 +28,8 @@ OBR.onReady(async () => {
       // Map item IDs to update their layer
       await OBR.scene.items.updateItems(context.items, (items) => {
         for (let item of items) {
-          // Cycle to the next layer (fallback to PROP if current layer is unrecognized)
-          item.layer = NEXT_LAYER[item.layer] || "PROP";
+          // Cycle to the next layer (fallback to MOUNT if current layer is unrecognized)
+          item.layer = NEXT_LAYER[item.layer] || "MOUNT";
           
           // Capture the friendly name for the notification
           newLayerName = LAYER_LABELS[item.layer] || `${item.layer} layer`;
